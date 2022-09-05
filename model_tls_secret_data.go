@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// CertificateData struct for CertificateData
-type CertificateData struct {
+// TLSSecretData struct for TLSSecretData
+type TLSSecretData struct {
 	TlsCrt *string `json:"tls.crt,omitempty"`
 	TlsKey *string `json:"tls.key,omitempty"`
 }
 
-// NewCertificateData instantiates a new CertificateData object
+// NewTLSSecretData instantiates a new TLSSecretData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificateData() *CertificateData {
-	this := CertificateData{}
+func NewTLSSecretData() *TLSSecretData {
+	this := TLSSecretData{}
 	return &this
 }
 
-// NewCertificateDataWithDefaults instantiates a new CertificateData object
+// NewTLSSecretDataWithDefaults instantiates a new TLSSecretData object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCertificateDataWithDefaults() *CertificateData {
-	this := CertificateData{}
+func NewTLSSecretDataWithDefaults() *TLSSecretData {
+	this := TLSSecretData{}
 	return &this
 }
 
 // GetTlsCrt returns the TlsCrt field value if set, zero value otherwise.
-func (o *CertificateData) GetTlsCrt() string {
+func (o *TLSSecretData) GetTlsCrt() string {
 	if o == nil || o.TlsCrt == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *CertificateData) GetTlsCrt() string {
 
 // GetTlsCrtOk returns a tuple with the TlsCrt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateData) GetTlsCrtOk() (*string, bool) {
+func (o *TLSSecretData) GetTlsCrtOk() (*string, bool) {
 	if o == nil || o.TlsCrt == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *CertificateData) GetTlsCrtOk() (*string, bool) {
 }
 
 // HasTlsCrt returns a boolean if a field has been set.
-func (o *CertificateData) HasTlsCrt() bool {
+func (o *TLSSecretData) HasTlsCrt() bool {
 	if o != nil && o.TlsCrt != nil {
 		return true
 	}
@@ -65,12 +65,12 @@ func (o *CertificateData) HasTlsCrt() bool {
 }
 
 // SetTlsCrt gets a reference to the given string and assigns it to the TlsCrt field.
-func (o *CertificateData) SetTlsCrt(v string) {
+func (o *TLSSecretData) SetTlsCrt(v string) {
 	o.TlsCrt = &v
 }
 
 // GetTlsKey returns the TlsKey field value if set, zero value otherwise.
-func (o *CertificateData) GetTlsKey() string {
+func (o *TLSSecretData) GetTlsKey() string {
 	if o == nil || o.TlsKey == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *CertificateData) GetTlsKey() string {
 
 // GetTlsKeyOk returns a tuple with the TlsKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateData) GetTlsKeyOk() (*string, bool) {
+func (o *TLSSecretData) GetTlsKeyOk() (*string, bool) {
 	if o == nil || o.TlsKey == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *CertificateData) GetTlsKeyOk() (*string, bool) {
 }
 
 // HasTlsKey returns a boolean if a field has been set.
-func (o *CertificateData) HasTlsKey() bool {
+func (o *TLSSecretData) HasTlsKey() bool {
 	if o != nil && o.TlsKey != nil {
 		return true
 	}
@@ -97,11 +97,11 @@ func (o *CertificateData) HasTlsKey() bool {
 }
 
 // SetTlsKey gets a reference to the given string and assigns it to the TlsKey field.
-func (o *CertificateData) SetTlsKey(v string) {
+func (o *TLSSecretData) SetTlsKey(v string) {
 	o.TlsKey = &v
 }
 
-func (o CertificateData) MarshalJSON() ([]byte, error) {
+func (o TLSSecretData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TlsCrt != nil {
 		toSerialize["tls.crt"] = o.TlsCrt
@@ -112,38 +112,38 @@ func (o CertificateData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCertificateData struct {
-	value *CertificateData
+type NullableTLSSecretData struct {
+	value *TLSSecretData
 	isSet bool
 }
 
-func (v NullableCertificateData) Get() *CertificateData {
+func (v NullableTLSSecretData) Get() *TLSSecretData {
 	return v.value
 }
 
-func (v *NullableCertificateData) Set(val *CertificateData) {
+func (v *NullableTLSSecretData) Set(val *TLSSecretData) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCertificateData) IsSet() bool {
+func (v NullableTLSSecretData) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCertificateData) Unset() {
+func (v *NullableTLSSecretData) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCertificateData(val *CertificateData) *NullableCertificateData {
-	return &NullableCertificateData{value: val, isSet: true}
+func NewNullableTLSSecretData(val *TLSSecretData) *NullableTLSSecretData {
+	return &NullableTLSSecretData{value: val, isSet: true}
 }
 
-func (v NullableCertificateData) MarshalJSON() ([]byte, error) {
+func (v NullableTLSSecretData) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCertificateData) UnmarshalJSON(src []byte) error {
+func (v *NullableTLSSecretData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
