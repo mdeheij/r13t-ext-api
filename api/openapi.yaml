@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  description: r13t external API.
+  title: r13t API
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- description: API version 1
+  name: API group
+paths:
+  /:
+    get:
+      operationId: Index
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+      summary: Homepage response
+  /api/v1/certificate:
+    get:
+      operationId: GetCertificate
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificateResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request
+      summary: Get latest development domain certificate
+      tags:
+      - API group
+components:
+  schemas:
+    CertificateData:
+      example:
+        tls.key: tls.key
+        tls.crt: tls.crt
+      properties:
+        tls.crt:
+          type: string
+        tls.key:
+          type: string
+      type: object
+    CertificateResponse:
+      example:
+        data:
+          tls.key: tls.key
+          tls.crt: tls.crt
+      properties:
+        data:
+          $ref: '#/components/schemas/CertificateData'
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          example: something wrong
+          type: string
+      type: object
+  securitySchemes:
+    apiToken:
+      in: header
+      name: Authorization
+      type: apiKey
