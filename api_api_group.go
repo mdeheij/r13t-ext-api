@@ -22,44 +22,44 @@ import (
 // APIGroupApiService APIGroupApi service
 type APIGroupApiService service
 
-type ApiGetCertificateRequest struct {
+type ApiGetCertificateSecretRequest struct {
 	ctx context.Context
 	ApiService *APIGroupApiService
 }
 
-func (r ApiGetCertificateRequest) Execute() (*CertificateResponse, *http.Response, error) {
-	return r.ApiService.GetCertificateExecute(r)
+func (r ApiGetCertificateSecretRequest) Execute() (*TLSSecret, *http.Response, error) {
+	return r.ApiService.GetCertificateSecretExecute(r)
 }
 
 /*
-GetCertificate Get latest development domain certificate
+GetCertificateSecret Get latest development domain certificate as Kubernetes secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetCertificateRequest
+ @return ApiGetCertificateSecretRequest
 */
-func (a *APIGroupApiService) GetCertificate(ctx context.Context) ApiGetCertificateRequest {
-	return ApiGetCertificateRequest{
+func (a *APIGroupApiService) GetCertificateSecret(ctx context.Context) ApiGetCertificateSecretRequest {
+	return ApiGetCertificateSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CertificateResponse
-func (a *APIGroupApiService) GetCertificateExecute(r ApiGetCertificateRequest) (*CertificateResponse, *http.Response, error) {
+//  @return TLSSecret
+func (a *APIGroupApiService) GetCertificateSecretExecute(r ApiGetCertificateSecretRequest) (*TLSSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CertificateResponse
+		localVarReturnValue  *TLSSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIGroupApiService.GetCertificate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIGroupApiService.GetCertificateSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/certificate"
+	localVarPath := localBasePath + "/api/v1/certificate-secret"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

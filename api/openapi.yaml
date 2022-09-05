@@ -20,15 +20,15 @@ paths:
                 type: string
           description: OK
       summary: Homepage response
-  /api/v1/certificate:
+  /api/v1/certificate-secret:
     get:
-      operationId: GetCertificate
+      operationId: GetCertificateSecret
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CertificateResponse'
+                $ref: '#/components/schemas/TLSSecret'
           description: OK
         "400":
           content:
@@ -36,12 +36,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Bad request
-      summary: Get latest development domain certificate
+      summary: Get latest development domain certificate as Kubernetes secret
       tags:
       - API group
 components:
   schemas:
-    CertificateData:
+    ErrorResponse:
+      properties:
+        error:
+          example: something wrong
+          type: string
+      type: object
+    TLSSecret:
+      example:
+        metadata:
+          name: name
+          namespace: namespace
+        apiVersion: apiVersion
+        data:
+          tls.key: tls.key
+          tls.crt: tls.crt
+        kind: kind
+        type: type
+      properties:
+        apiVersion:
+          type: string
+        data:
+          $ref: '#/components/schemas/TLSSecret_data'
+        kind:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/TLSSecret_metadata'
+        type:
+          type: string
+      type: object
+    TLSSecret_data:
       example:
         tls.key: tls.key
         tls.crt: tls.crt
@@ -51,19 +80,14 @@ components:
         tls.key:
           type: string
       type: object
-    CertificateResponse:
+    TLSSecret_metadata:
       example:
-        data:
-          tls.key: tls.key
-          tls.crt: tls.crt
+        name: name
+        namespace: namespace
       properties:
-        data:
-          $ref: '#/components/schemas/CertificateData'
-      type: object
-    ErrorResponse:
-      properties:
-        error:
-          example: something wrong
+        name:
+          type: string
+        namespace:
           type: string
       type: object
   securitySchemes:

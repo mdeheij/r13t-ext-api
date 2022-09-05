@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetCertificate**](APIGroupApi.md#GetCertificate) | **Get** /api/v1/certificate | Get latest development domain certificate
+[**GetCertificateSecret**](APIGroupApi.md#GetCertificateSecret) | **Get** /api/v1/certificate-secret | Get latest development domain certificate as Kubernetes secret
 
 
 
-## GetCertificate
+## GetCertificateSecret
 
-> CertificateResponse GetCertificate(ctx).Execute()
+> TLSSecret GetCertificateSecret(ctx).Execute()
 
-Get latest development domain certificate
+Get latest development domain certificate as Kubernetes secret
 
 ### Example
 
@@ -30,13 +30,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.APIGroupApi.GetCertificate(context.Background()).Execute()
+    resp, r, err := apiClient.APIGroupApi.GetCertificateSecret(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `APIGroupApi.GetCertificate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `APIGroupApi.GetCertificateSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCertificate`: CertificateResponse
-    fmt.Fprintf(os.Stdout, "Response from `APIGroupApi.GetCertificate`: %v\n", resp)
+    // response from `GetCertificateSecret`: TLSSecret
+    fmt.Fprintf(os.Stdout, "Response from `APIGroupApi.GetCertificateSecret`: %v\n", resp)
 }
 ```
 
@@ -46,12 +46,12 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCertificateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCertificateSecretRequest struct via the builder pattern
 
 
 ### Return type
 
-[**CertificateResponse**](CertificateResponse.md)
+[**TLSSecret**](TLSSecret.md)
 
 ### Authorization
 

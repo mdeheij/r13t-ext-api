@@ -78,15 +78,16 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*APIGroupApi* | [**GetCertificate**](docs/APIGroupApi.md#getcertificate) | **Get** /api/v1/certificate | Get latest development domain certificate
+*APIGroupApi* | [**GetCertificateSecret**](docs/APIGroupApi.md#getcertificatesecret) | **Get** /api/v1/certificate-secret | Get latest development domain certificate as Kubernetes secret
 *DefaultApi* | [**Index**](docs/DefaultApi.md#index) | **Get** / | Homepage response
 
 
 ## Documentation For Models
 
- - [CertificateData](docs/CertificateData.md)
- - [CertificateResponse](docs/CertificateResponse.md)
  - [ErrorResponse](docs/ErrorResponse.md)
+ - [TLSSecret](docs/TLSSecret.md)
+ - [TLSSecretData](docs/TLSSecretData.md)
+ - [TLSSecretMetadata](docs/TLSSecretMetadata.md)
 
 
 ## Documentation For Authorization
